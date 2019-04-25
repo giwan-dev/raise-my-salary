@@ -1,9 +1,10 @@
 import React from 'react';
+import SalaryRateCalculator from './SalaryRateCalculator';
 
 const App: React.FC = () => {
   return (
     <div>
-      hello world
+      <SalaryRateCalculator />
     </div>
   );
 };
