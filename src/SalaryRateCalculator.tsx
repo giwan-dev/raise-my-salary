@@ -23,6 +23,7 @@ export default class SalaryRateCalculator extends React.Component<{}, SalaryRate
     this.handleFinalSalaryInputChange = this.handleFinalSalaryInputChange.bind(this)
     this.handleYearInputChange = this.handleYearInputChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleReset = this.handleReset.bind(this)
     this.renderResult = this.renderResult.bind(this)
     this.renderResetButton = this.renderResetButton.bind(this)
   }
@@ -55,6 +56,15 @@ export default class SalaryRateCalculator extends React.Component<{}, SalaryRate
     })
   }
 
+  public handleReset() {
+    this.setState({
+      finalSalary: 0,
+      initialSalary: 0,
+      result: null,
+      year: 0,
+    })
+  }
+
   public renderResult() {
     const { result } = this.state
 
@@ -71,7 +81,12 @@ export default class SalaryRateCalculator extends React.Component<{}, SalaryRate
   public renderResetButton() {
     if (this.state.result !== null) {
       return (
-        <button type="reset">다시하기</button>
+        <button
+          type="reset"
+          onClick={this.handleReset}
+        >
+          다시하기
+        </button>
       )
     }
   }
