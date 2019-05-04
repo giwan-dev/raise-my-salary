@@ -23,8 +23,8 @@
     "eject": "react-scripts eject",
     "lint:ts:init": "tslint --init",
     "lint:ts": "tslint -c tslint.json 'src/**/*.ts'",
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d build"
+    "predeploy": "yarn build && mkdir build/.circleci && cp .circleci/config.yml build/.circleci/",
+    "deploy": "gh-pages -d build -t"
   },
   "eslintConfig": {
     "extends": "react-app"
