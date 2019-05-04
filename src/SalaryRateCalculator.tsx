@@ -1,83 +1,83 @@
-import * as React from 'react';
-import { getCommonRatio } from './commonRatio';
+import React from 'react'
+import { getCommonRatio } from './commonRatio'
 
 interface SalaryRateCalculatorState {
-  initialSalary: number;
-  finalSalary: number;
-  year: number;
-  result: string|null;
+  initialSalary: number
+  finalSalary: number
+  year: number
+  result: string|null
 }
 
 export default class SalaryRateCalculator extends React.Component<{}, SalaryRateCalculatorState> {
   constructor(props: {}) {
-    super(props);
+    super(props)
 
     this.state = {
       finalSalary: 0,
       initialSalary: 0,
       result: null,
       year: 0,
-    };
+    }
 
-    this.handleInitialSalaryInputChange = this.handleInitialSalaryInputChange.bind(this);
-    this.handleFinalSalaryInputChange = this.handleFinalSalaryInputChange.bind(this);
-    this.handleYearInputChange = this.handleYearInputChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.renderResult = this.renderResult.bind(this);
-    this.renderResetButton = this.renderResetButton.bind(this);
+    this.handleInitialSalaryInputChange = this.handleInitialSalaryInputChange.bind(this)
+    this.handleFinalSalaryInputChange = this.handleFinalSalaryInputChange.bind(this)
+    this.handleYearInputChange = this.handleYearInputChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.renderResult = this.renderResult.bind(this)
+    this.renderResetButton = this.renderResetButton.bind(this)
   }
 
   public handleInitialSalaryInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     this.setState({
       initialSalary: e.currentTarget.valueAsNumber,
-    });
+    })
   }
 
   public handleFinalSalaryInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     this.setState({
       finalSalary: e.currentTarget.valueAsNumber,
-    });
+    })
   }
 
   public handleYearInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     this.setState({
       year: e.currentTarget.valueAsNumber,
-    });
+    })
   }
 
   public handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+    e.preventDefault()
 
-    const { initialSalary, finalSalary, year } = this.state;
-    const commonRatio = getCommonRatio(initialSalary, finalSalary, year);
+    const { initialSalary, finalSalary, year } = this.state
+    const commonRatio = getCommonRatio(initialSalary, finalSalary, year)
     this.setState({
       result: ((commonRatio - 1) * 100).toFixed(1),
-    });
+    })
   }
 
   public renderResult() {
-    const { result } = this.state;
+    const { result } = this.state
 
     if (result !== null) {
       return (
         <div>
           매년 {result}% 인상으로 달성할 수 있습니다! 화이팅!
         </div>
-      );
+      )
     }
-    return null;
+    return null
   }
 
   public renderResetButton() {
     if (this.state.result !== null) {
       return (
         <button type="reset">다시하기</button>
-      );
+      )
     }
   }
 
   public render() {
-    const { initialSalary, finalSalary, year } = this.state;
+    const { initialSalary, finalSalary, year } = this.state
 
     return (
       <div>
@@ -112,6 +112,6 @@ export default class SalaryRateCalculator extends React.Component<{}, SalaryRate
         </form>
         {this.renderResult()}
       </div>
-    );
+    )
   }
 }
