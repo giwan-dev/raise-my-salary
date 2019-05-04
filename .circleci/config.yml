@@ -62,7 +62,6 @@ jobs:
       - deploy:
           name: Deploy
           command: |
-            yarn build
             yarn deploy
 
 workflows:
