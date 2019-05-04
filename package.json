@@ -2,12 +2,14 @@
   "name": "raise-my-salary",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://zprime0920.github.io/raise-my-salary",
   "dependencies": {
     "@types/jest": "24.0.11",
     "@types/node": "11.13.7",
     "@types/react": "16.8.14",
     "@types/react-dom": "16.8.4",
     "@types/styled-components": "^4.1.14",
+    "gh-pages": "^2.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.0",
@@ -20,7 +22,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint:ts:init": "tslint --init",
-    "lint:ts": "tslint -c tslint.json 'src/**/*.ts'"
+    "lint:ts": "tslint -c tslint.json 'src/**/*.ts'",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
