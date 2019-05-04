@@ -62,6 +62,8 @@ jobs:
       - deploy:
           name: Deploy
           command: |
+            git config user.email $GH_EMAIL
+            git config user.name $GH_NAME
             yarn deploy
 
 workflows:
